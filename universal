@@ -1,8 +1,8 @@
 local Library = loadstring(game:HttpGetAsync("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/latest/download/Fluent.luau"))()
 
 local Window = Library:CreateWindow{
-    Title = `MyLoader`,
-    SubTitle = "MyLoader",
+    Title = `Setting`,
+    SubTitle = "0.1.0",
     TabWidth = 160,
     Size = UDim2.fromOffset(830, 525),
     Resize = true, -- Resize this ^ Size according to a 1920x1080 screen, good for mobile users but may look weird on some devices
@@ -14,7 +14,7 @@ local Window = Library:CreateWindow{
 
 local Tabs = {
     Main = Window:CreateTab{
-        Title = "News",
+        Title = "Tab News",
         Icon = "nil"
     }
 }
@@ -23,13 +23,36 @@ local Paragraph = Tabs.Main:CreateParagraph("Paragraph", {
     Title = "Change logs!",
     Content = [[
 Update!
-[+] no longer need key
+[+] new key system
 ]]
 })
 
 local Tabs = {
     Main = Window:CreateTab{
-        Title = "Server",
+        Title = "Tab Load",
+        Icon = "nil"
+    }
+}
+
+Tabs.Main:CreateButton{
+    Title = "Infinite Yield",
+    Description = "",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/edgeiy/infiniteyield/master/source"))()
+    end
+}
+
+Tabs.Main:CreateButton{
+    Title = "Player Stat",
+    Description = "",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/moilthink/script-r/refs/heads/main/stat"))()
+    end
+}
+
+local Tabs = {
+    Main = Window:CreateTab{
+        Title = "Tab Server",
         Icon = "nil"
     }
 }
@@ -102,6 +125,25 @@ Tabs.Main:CreateButton{
             TeleportService:TeleportToPlaceInstance(placeId, instanceId, game.Players.LocalPlayer)
         else
             warn("Invalid Game ID or Job ID.")
+        end
+    end
+}
+
+Tabs.Main:CreateButton{
+    Title = "loop join server",
+    Description = "",
+    Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local placeId = tonumber(gameid)
+        local instanceId = tostring(jobid)
+
+        while true do
+            if placeId and instanceId ~= "" then
+                TeleportService:TeleportToPlaceInstance(placeId, instanceId, game.Players.LocalPlayer)
+            else
+                warn("Invalid Game ID or Job ID.")
+            end
+            wait(0.5) -- retry delay
         end
     end
 }
@@ -200,15 +242,67 @@ Tabs.Main:CreateButton{
     end
 }
 
+
+
 local Tabs = {
     Main = Window:CreateTab{
-        Title = "Grapfic",
+        Title = "Tab Graphic",
         Icon = "nil"
     }
 }
 
 Tabs.Main:CreateButton{
-    Title = "Realistic Grapfic",
+    Title = "Boost fps",
+    Description = "",
+    Callback = function()
+        local Terrain = workspace:FindFirstChildOfClass('Terrain')
+        Terrain.WaterWaveSize = 0
+        Terrain.WaterWaveSpeed = 0
+        Terrain.WaterReflectance = 0
+        Terrain.WaterTransparency = 0
+        Lighting.GlobalShadows = false
+        Lighting.FogEnd = 9e9
+        settings().Rendering.QualityLevel = 1
+
+        for i, v in pairs(game:GetDescendants()) do
+            if v:IsA("Part") or v:IsA("UnionOperation") or v:IsA("MeshPart") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+                v.Material = "Plastic"
+                v.Reflectance = 0
+            elseif v:IsA("Decal") then
+                v.Transparency = 1
+            elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+                v.Lifetime = NumberRange.new(0)
+            elseif v:IsA("Explosion") then
+                v.BlastPressure = 1
+                v.BlastRadius = 1
+            end
+        end
+
+        for i, v in pairs(Lighting:GetDescendants()) do
+            if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
+                v.Enabled = false
+            end
+        end
+
+        workspace.DescendantAdded:Connect(function(child)
+            task.spawn(function()
+                if child:IsA('ForceField') then
+                    RunService.Heartbeat:Wait()
+                    child:Destroy()
+                elseif child:IsA('Sparkles') then
+                    RunService.Heartbeat:Wait()
+                    child:Destroy()
+                elseif child:IsA('Smoke') or child:IsA('Fire') then
+                    RunService.Heartbeat:Wait()
+                    child:Destroy()
+                end
+            end)
+        end)
+    end
+}
+
+Tabs.Main:CreateButton{
+    Title = "Realistic Graphic",
     Description = "",
     Callback = function()
         local Lighting = game:GetService("Lighting")
@@ -282,5 +376,53 @@ Tabs.Main:CreateButton{
             sunRays.Intensity = 0.1
             sunRays.Spread = 0.1
         end
+    end
+}
+
+local Tabs = {
+    Main = Window:CreateTab{
+        Title = "Tab TP Debugger",
+        Icon = "nil"
+    }
+}
+
+Tabs.Main:CreateButton{
+    Title = "print position",
+    Description = "",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        -- Get player position
+        local playerPosition = humanoidRootPart.Position
+        print("You are at position:", playerPosition)
+
+        -- Copy position to clipboard
+        local clipboardFunc = setclipboard or toclipboard
+        if clipboardFunc then
+            clipboardFunc(tostring(playerPosition))
+            print("Copied position to clipboard:", playerPosition)
+        else
+            warn("Clipboard not supported on this executor.")
+        end
+    end
+}
+
+Tabs.Main:CreateButton{
+    Title = "tp",
+    Description = "",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        -- Target position
+        local targetPosition = Vector3.new(-78.90654754638672, 148.4068603515625, -80.8273696899414)
+
+        -- Teleport the character
+        humanoidRootPart.CFrame = CFrame.new(targetPosition)
+
+        print("Teleported to:", targetPosition)
     end
 }
