@@ -2,7 +2,7 @@
 local Library = loadstring(game:HttpGetAsync("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/latest/download/Fluent.luau"))()
 
 local Window = Library:CreateWindow{
-    Title = `Banana-grow [ Premium ]`,
+    Title = `Banana-grow [ DEV ]`,
     SubTitle = "V-0.1.1",
     TabWidth = 160,
     Size = UDim2.fromOffset(830, 525),
@@ -12,27 +12,6 @@ local Window = Library:CreateWindow{
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 }
-
-local Tabs = {
-    Main = Window:CreateTab{
-        Title = "Tab News",
-        Icon = "nil"
-    }
-}
-
-local Paragraph = Tabs.Main:CreateParagraph("Paragraph", {
-    Title = "Change logs!",
-    Content = [[
-Ver-0.1.1
-[+] Updated to latest data
-[+] Update shop data
-[+] New boost fps
-
-game log
-[+] Blood shop reset every 15 min
-[+] Blood moon every 3 hours and 33% with moonlit
-]]
-})
 
 local Tabs = {
     Main = Window:CreateTab{
@@ -184,9 +163,9 @@ local selectedEvents = {}
 
 -- Create dropdown
 local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
-    Title = "Item",
+    Title = "Event",
     Description = "",
-    Values = {"Mysterious Crate", "Night Egg", "Night Seed Pack", "Blood Banana", "Moon Melon", "Star Caller", "Blood Hedgehog", "Blood Kiwi"},
+    Values = {"Mysterious Crate", "Night Egg", "Night Seed Pack", "Blood Banana", "Moon Melon", "Star Caller", "Blood Hedgehog", "Blood Kiwi", "Blood Owl", "Chocolate Carrot", "Red Lollipop", "Candy Sunflower", "Easter Egg", "Chocolate Sprinkler", "Candy Blossom"},
     Multi = true,
     Default = {},
 })
