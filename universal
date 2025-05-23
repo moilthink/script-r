@@ -242,11 +242,9 @@ Tabs.Main:CreateButton{
     end
 }
 
-
-
 local Tabs = {
     Main = Window:CreateTab{
-        Title = "Tab Graphic",
+        Title = "Local Player",
         Icon = "nil"
     }
 }
@@ -379,11 +377,35 @@ Tabs.Main:CreateButton{
     end
 }
 
-local Tabs = {
-    Main = Window:CreateTab{
-        Title = "Tab TP Debugger",
-        Icon = "nil"
-    }
+Tabs.Main:CreateButton{
+    Title = "Copy HWID",
+    Description = "",
+    Callback = function()
+        local clipboardFunc = setclipboard or toclipboard
+        if clipboardFunc then
+            local hwid = gethwid()
+            clipboardFunc(tostring(hwid))
+            print("Your HWID is: " .. hwid)
+        else
+            warn("Clipboard not supported on this executor.")
+        end
+    end
+}
+
+Tabs.Main:CreateButton{
+    Title = "Copy Client ID",
+    Description = "",
+    Callback = function()
+        local clipboardFunc = setclipboard or toclipboard
+        local clientId = game:GetService("RbxAnalyticsService"):GetClientId()
+
+        if clipboardFunc then
+            clipboardFunc(tostring(clientId))
+            print("Client ID: " .. clientId)
+        else
+            warn("Clipboard not supported on this executor.")
+        end
+    end
 }
 
 Tabs.Main:CreateButton{
@@ -424,43 +446,5 @@ Tabs.Main:CreateButton{
         humanoidRootPart.CFrame = CFrame.new(targetPosition)
 
         print("Teleported to:", targetPosition)
-    end
-}
-
-local Tabs = {
-    Main = Window:CreateTab{
-        Title = "Local Player",
-        Icon = "nil"
-    }
-}
-
-Tabs.Main:CreateButton{
-    Title = "Copy HWID",
-    Description = "",
-    Callback = function()
-        local clipboardFunc = setclipboard or toclipboard
-        if clipboardFunc then
-            local hwid = gethwid()
-            clipboardFunc(tostring(hwid))
-            print("Your HWID is: " .. hwid)
-        else
-            warn("Clipboard not supported on this executor.")
-        end
-    end
-}
-
-Tabs.Main:CreateButton{
-    Title = "Copy Client ID",
-    Description = "",
-    Callback = function()
-        local clipboardFunc = setclipboard or toclipboard
-        local clientId = game:GetService("RbxAnalyticsService"):GetClientId()
-
-        if clipboardFunc then
-            clipboardFunc(tostring(clientId))
-            print("Client ID: " .. clientId)
-        else
-            warn("Clipboard not supported on this executor.")
-        end
     end
 }
