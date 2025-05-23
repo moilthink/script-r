@@ -440,8 +440,9 @@ Tabs.Main:CreateButton{
     Callback = function()
         local clipboardFunc = setclipboard or toclipboard
         if clipboardFunc then
-            clipboardFunc(tostring(game.PlaceId))
-            print("Copied Game ID:", game.PlaceId)
+            local hwid = gethwid()
+            clipboardFunc(tostring(hwid))
+            print("Your HWID is: " .. hwid)
         else
             warn("Clipboard not supported on this executor.")
         end
