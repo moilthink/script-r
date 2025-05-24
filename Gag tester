@@ -1,0 +1,91 @@
+-- current toggle [5]
+local Library = loadstring(game:HttpGetAsync("https://github.com/ActualMasterOogway/Fluent-Renewed/releases/latest/download/Fluent.luau"))()
+
+local Window = Library:CreateWindow{
+    Title = `Banana-grow [ DEV ]`,
+    SubTitle = "V-0.1.1",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(830, 525),
+    Resize = true, -- Resize this ^ Size according to a 1920x1080 screen, good for mobile users but may look weird on some devices
+    MinSize = Vector2.new(470, 380),
+    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
+}
+
+local Tabs = {
+    Main = Window:CreateTab{
+        Title = "Tab Shop",
+        Icon = "nil"
+    }
+}
+
+local HttpService = game:GetService("HttpService")
+
+-- Put your actual raw URL here
+local url = "https://raw.githubusercontent.com/moilthink/script-r/refs/heads/main/Data"
+
+-- Load shopdata from URL safely, no warnings, returns empty table on failure
+local function loadShopData(url)
+    local success, response = pcall(game.HttpGet, game, url)
+    if not success then return {} end
+
+    local func = loadstring(response)
+    if not func then return {} end
+
+    local ok, shopdata = pcall(func)
+    if not ok then return {} end
+
+    return shopdata
+end
+
+local shopdata = loadShopData(url)
+
+-- Extract all cosmetic names for dropdown values
+local cosmeticNames = {}
+for name, data in pairs(shopdata) do
+    table.insert(cosmeticNames, name)
+end
+
+local selectedCosmeticItems = {}
+
+-- Create dropdown (assuming Tabs.Main:CreateDropdown exists)
+local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
+    Title = "Cosmetic Item",
+    Description = "",
+    Values = cosmeticNames,
+    Multi = true,
+    Default = {},
+})
+
+MultiDropdown:OnChanged(function(value)
+    selectedCosmeticItems = {}
+    for cosmeticName, isSelected in pairs(value) do
+        if isSelected then
+            table.insert(selectedCosmeticItems, cosmeticName)
+        end
+    end
+end)
+
+local Toggle7 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+
+Toggle7:OnChanged(function()
+    if not Toggle7Interacted then
+        Toggle7Interacted = true
+        return
+    end
+
+    BuyCosmeticItemEnabled = not BuyCosmeticItemEnabled
+
+    if BuyCosmeticItemEnabled then
+        task.spawn(function()
+            while BuyCosmeticItemEnabled do
+                for _, cosmeticName in ipairs(selectedCosmeticItems) do
+                    local args = {cosmeticName}
+                    game:GetService("ReplicatedStorage").GameEvents.BuyCosmeticItem:FireServer(unpack(args))
+                    task.wait(0.1)
+                end
+            end
+        end)
+    end
+end)
