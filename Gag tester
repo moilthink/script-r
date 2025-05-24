@@ -8,7 +8,7 @@ local Window = Library:CreateWindow{
     Size = UDim2.fromOffset(830, 525),
     Resize = true, -- Resize this ^ Size according to a 1920x1080 screen, good for mobile users but may look weird on some devices
     MinSize = Vector2.new(470, 380),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 }
@@ -22,10 +22,8 @@ local Tabs = {
 
 local HttpService = game:GetService("HttpService")
 
--- Put your actual raw URL here
 local url = "https://raw.githubusercontent.com/moilthink/script-r/refs/heads/main/Data"
 
--- Load shopdata from URL safely, no warnings, returns empty table on failure
 local function loadShopData(url)
     local success, response = pcall(game.HttpGet, game, url)
     if not success then return {} end
@@ -41,7 +39,6 @@ end
 
 local shopdata = loadShopData(url)
 
--- Extract all cosmetic names for dropdown values
 local cosmeticNames = {}
 for name, data in pairs(shopdata) do
     table.insert(cosmeticNames, name)
@@ -49,7 +46,6 @@ end
 
 local selectedCosmeticItems = {}
 
--- Create dropdown (assuming Tabs.Main:CreateDropdown exists)
 local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
     Title = "Cosmetic Item",
     Description = "",
