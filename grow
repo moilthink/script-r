@@ -331,7 +331,7 @@ local selectedCosmeticItems = {}
 local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
     Title = "Cosmetic Item",
     Description = "",
-    Values = {"Sign Crate", "Common Gnome Crate", "Fun Crate", "Farmers Gnome Crate", "Classic Gnome Crate", "Statue Crate"},
+    Values = {"Yellow Umbrella", "Orange Umbrella", "Brick Stack", "Compost Bin", "Log", "Rock Pile", "Rock Pile", "Rake", "Shovel", "Torch", "Red Pottery", "White Pottery", "White Pottery", "Wood Pile", "Small Circle Tile", "Medium Circle Tile", "Small Path Tile", "Medium Path Tile", "Large Path Tile", "Axe Stump", "Bookshelf", "Brown Bench", "Hay Bale", "Light On Ground", "Log Bench", "Mini TV", "Shovel Grave"},
     Multi = true,
     Default = {},
 })
