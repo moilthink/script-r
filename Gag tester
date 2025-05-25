@@ -52,13 +52,13 @@ local selectedCosmeticItems = {}
 
 local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
     Title = "Cosmetic Item",
-    Description = "Select cosmetic items to auto buy",
+    Description = "",
     Values = cosmeticNames,
     Multi = true,
     Default = {},
 })
 
-MultiDropdown:OnChanged(function(value)
+MultiDropdown:OnChanged(function(Value)
     selectedCosmeticItems = {}
     for cosmeticName, isSelected in pairs(value) do
         if isSelected then
@@ -67,11 +67,11 @@ MultiDropdown:OnChanged(function(value)
     end
 end)
 
-local Toggle8 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+local Toggle2 = Tabs.Main:CreateToggle("MyToggle", {Title = "Toggle", Default = false })
 
-Toggle8:OnChanged(function()
-    if not Toggle8Interacted then
-        Toggle8Interacted = true
+Toggle2:OnChanged(function()
+    if not Toggle2Interacted then
+        Toggle2Interacted = true
         return
     end
 
@@ -80,10 +80,9 @@ Toggle8:OnChanged(function()
     if BuyCosmeticItemEnabled then
         task.spawn(function()
             while BuyCosmeticItemEnabled do
-                while BuyCosmeticItemEnabled do
                 for _, cosmeticName in ipairs(selectedCosmeticItems) do
                     game:GetService("ReplicatedStorage").GameEvents.BuyCosmeticItem:FireServer(cosmeticName)
-                    task.wait(0.1)
+                    task.wait(0.5)
                 end
             end
         end)
@@ -105,7 +104,7 @@ local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
     Default = {},
 })
 
-MultiDropdown:OnChanged(function(value)
+MultiDropdown:OnChanged(function(Value)
     selectedSeeds = {}
     for seedName, isSelected in pairs(value) do
         if isSelected then
@@ -114,11 +113,10 @@ MultiDropdown:OnChanged(function(value)
     end
 end)
 
-local Toggle7 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
-
-Toggle7:OnChanged(function()
-    if not Toggle7Interacted then
-        Toggle8Interacted = true
+local Toggle1 = Tabs.Main:CreateToggle("MyToggle", {Title = "Toggle", Default = false })
+Toggle1:OnChanged(function()
+    if not Toggle1Interacted then
+        Toggle1Interacted = true
         return
     end
 
@@ -129,7 +127,7 @@ Toggle7:OnChanged(function()
             while BuySeedEnabled do
                 for _, seedName in ipairs(selectedSeeds) do
                     game:GetService("ReplicatedStorage").GameEvents.BuySeedStock:FireServer(seedName)
-                    task.wait(0.1)
+                    task.wait(0.5) -- only wait here
                 end
             end
         end)
