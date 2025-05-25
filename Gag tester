@@ -13,31 +13,35 @@ local Window = Library:CreateWindow{
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 }
 
+local HttpService = game:GetService("HttpService")
+
+local url = "https://raw.githubusercontent.com/moilthink/script-r/main/Data.lua" -- Your raw .lua file
+
+local function loadAllData(url)
+    local success, response = pcall(function()
+        return game:HttpGet(url)
+    end)
+    if not success then return {} end
+
+    local func = loadstring(response)
+    if not func then return {} end
+
+    local ok, data = pcall(func)
+    if not ok then return {} end
+
+    return data
+end
+
+local data = loadAllData(url)
+local shopdata = data.ShopData or {}
+local seeddata = data.SeedData or {}
+
 local Tabs = {
     Main = Window:CreateTab{
         Title = "Tab Shop",
         Icon = "nil"
     }
 }
-
-local HttpService = game:GetService("HttpService")
-
-local url = "https://raw.githubusercontent.com/moilthink/script-r/refs/heads/main/Data"
-
-local function loadShopData(url)
-    local success, response = pcall(game.HttpGet, game, url)
-    if not success then return {} end
-
-    local func = loadstring(response)
-    if not func then return {} end
-
-    local ok, shopdata = pcall(func)
-    if not ok then return {} end
-
-    return shopdata
-end
-
-local shopdata = loadShopData(url)
 
 local cosmeticNames = {}
 for name, data in pairs(shopdata) do
@@ -79,72 +83,6 @@ Toggle8:OnChanged(function()
                 for _, cosmeticName in ipairs(selectedCosmeticItems) do
                     local args = {cosmeticName}
                     game:GetService("ReplicatedStorage").GameEvents.BuyCosmeticItem:FireServer(unpack(args))
-                    task.wait(0.1)
-                end
-            end
-        end)
-    end
-end)
-
-local HttpService = game:GetService("HttpService")
-
-local url = "https://raw.githubusercontent.com/moilthink/script-r/refs/heads/main/Data"
-
-local function loadSeedData(url)
-    local success, response = pcall(game.HttpGet, game, url)
-    if not success then return {} end
-
-    local func = loadstring(response)
-    if not func then return {} end
-
-    local ok, seeddata = pcall(func)
-    if not ok then return {} end
-
-    return seeddata
-end
-
-local seeddata = loadSeedData(url)
-
-local seedNames = {}
-for name, data in pairs(seeddata) do
-    table.insert(seedNames, name)
-end
-
-local selectedSeeds = {}
-
-local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
-    Title = "Seed",
-    Description = "",
-    Values = seedNames,
-    Multi = true,
-    Default = {},
-})
-
-MultiDropdown:OnChanged(function(value)
-    selectedSeeds = {}
-    for seedName, isSelected in pairs(value) do
-        if isSelected then
-            table.insert(selectedSeeds, seedName)
-        end
-    end
-end)
-
-local Toggle7 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
-
-Toggle7:OnChanged(function()
-    if not Toggle7Interacted then
-        Toggle7Interacted = true
-        return
-    end
-
-    BuySeedEnabled = not BuySeedEnabled
-
-    if BuySeedEnabled then
-        task.spawn(function()
-            while BuySeedEnabled do
-                for _, seedName in ipairs(selectedSeeds) do
-                    local args = {seedName}
-                    game:GetService("ReplicatedStorage").GameEvents.BuySeedStock:FireServer(unpack(args))
                     task.wait(0.1)
                 end
             end
