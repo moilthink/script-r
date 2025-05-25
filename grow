@@ -15,124 +15,16 @@ local Window = Library:CreateWindow{
 
 local Tabs = {
     Main = Window:CreateTab{
-        Title = "Tab Local Player",
-        Icon = "nil"
-    }
-}
-
-Tabs.Main:CreateButton{
-    Title = "Boost Fps",
-    Description = "",
-    Callback = function()
-        -- Target particle names to delete
-        local targetNames = {
-            FrozenParticle = true,
-            WetParticle = true,
-            ChilledParticle = true,
-            Fire = true,
-            Shine_Particle = true,
-            ShockedParticle = true,
-        }
-
-        -- Scan the entire game
-        for _, obj in ipairs(game:GetDescendants()) do
-            if obj:IsA("ParticleEmitter") and targetNames[obj.Name] then
-                obj:Destroy()
-            end
-        end
-    end
-}
-
-Tabs.Main:CreateButton{
-    Title = "Realistic Graphic",
-    Description = "",
-    Callback = function()
-        local Lighting = game:GetService("Lighting")
-
-        -- Set Lighting properties
-        Lighting.Ambient = Color3.fromRGB(50, 45, 50)
-        Lighting.Brightness = 8
-        Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
-        Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
-        Lighting.EnvironmentDiffuseScale = 1
-        Lighting.EnvironmentSpecularScale = 1
-        Lighting.GlobalShadows = true
-        Lighting.OutdoorAmbient = Color3.fromRGB(125, 125, 125)
-        Lighting.ShadowSoftness = 0.25
-        Lighting.Technology = Enum.Technology.Future
-        Lighting.ClockTime = 6.4
-        Lighting.GeographicLatitude = 3.141
-        Lighting.TimeOfDay = "06:24:00"
-        Lighting.ExposureCompensation = -0.5
-        Lighting.FogColor = Color3.fromRGB(192, 192, 192)
-        Lighting.FogStart = 0
-        Lighting.FogEnd = 100000
-
-        -- Delete existing Sky objects
-        for _, v in pairs(Lighting:GetChildren()) do
-            if v:IsA("Sky") then
-                v:Destroy()
-            end
-        end
-
-        -- Modify existing Atmosphere
-        local atmosphere = Lighting:FindFirstChildOfClass("Atmosphere")
-        if atmosphere then
-            atmosphere.Density = 0.3
-            atmosphere.Offset = 0
-            atmosphere.Color = Color3.fromRGB(255, 255, 255)
-            atmosphere.Decay = Color3.fromRGB(16, 22, 25)
-            atmosphere.Glare = 0.1
-            atmosphere.Haze = 2
-        end
-
-        -- Modify existing BloomEffect
-        local bloom = Lighting:FindFirstChildOfClass("BloomEffect")
-        if bloom then
-            bloom.Intensity = 2.5
-            bloom.Size = 25
-            bloom.Threshold = 2
-        end
-
-        -- Modify existing ColorCorrectionEffect
-        local colorCorrection = Lighting:FindFirstChildOfClass("ColorCorrectionEffect")
-        if colorCorrection then
-            colorCorrection.Brightness = -0.025
-            colorCorrection.Contrast = 0
-            colorCorrection.Saturation = -0.1
-            colorCorrection.TintColor = Color3.fromRGB(255, 255, 255)
-        end
-
-        -- Modify existing DepthOfFieldEffect
-        local depthOfField = Lighting:FindFirstChildOfClass("DepthOfFieldEffect")
-        if depthOfField then
-            depthOfField.FarIntensity = 0.219
-            depthOfField.FocusDistance = 51.6
-            depthOfField.InFocusRadius = 50
-            depthOfField.NearIntensity = 1
-        end
-
-        -- Modify existing SunRaysEffect
-        local sunRays = Lighting:FindFirstChildOfClass("SunRaysEffect")
-        if sunRays then
-            sunRays.Intensity = 0.1
-            sunRays.Spread = 0.1
-        end
-    end
-}
-
-local Tabs = {
-    Main = Window:CreateTab{
         Title = "Tab Shop",
         Icon = "nil"
     }
 }
 
-local Toggle4 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto Sell", Default = false})
+local Toggle1 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto Sell", Default = false})
 
-Toggle4:OnChanged(function()
-    if not Toggle4Interacted then
-        Toggle4Interacted = true
+Toggle1:OnChanged(function()
+    if not Toggle1Interacted then
+        Toggle1Interacted = true
         return
     end
 
@@ -165,11 +57,11 @@ MultiDropdown:OnChanged(function(Value)
     end
 end)
 
-local Toggle1 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+local Toggle2 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
 
-Toggle1:OnChanged(function()
-    if not Toggle1Interacted then
-        Toggle1Interacted = true
+Toggle2:OnChanged(function()
+    if not Toggle2Interacted then
+        Toggle2Interacted = true
         return
     end
 
@@ -209,11 +101,11 @@ MultiDropdown:OnChanged(function(Value)
     end
 end)
 
-local Toggle2 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+local Toggle3 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
 
-Toggle2:OnChanged(function()
-    if not Toggle2Interacted then
-        Toggle2Interacted = true
+Toggle3:OnChanged(function()
+    if not Toggle3Interacted then
+        Toggle3Interacted = true
         return
     end
 
@@ -258,11 +150,11 @@ MultiDropdown:OnChanged(function(Value)
     end
 end)
 
-local Toggle5 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+local Toggle4 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
 
-Toggle5:OnChanged(function()
-    if not Toggle5Interacted then
-        Toggle5Interacted = true
+Toggle4:OnChanged(function()
+    if not Toggle4Interacted then
+        Toggle4Interacted = true
         return
     end
 
@@ -302,11 +194,11 @@ MultiDropdown:OnChanged(function(Value)
     end
 end)
 
-local Toggle6 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+local Toggle5 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
 
-Toggle6:OnChanged(function()
-    if not Toggle6Interacted then
-        Toggle6Interacted = true
+Toggle5:OnChanged(function()
+    if not Toggle5Interacted then
+        Toggle5Interacted = true
         return
     end
 
@@ -346,11 +238,11 @@ MultiDropdown:OnChanged(function(Value)
     end
 end)
 
-local Toggle7 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+local Toggle6 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
 
-Toggle7:OnChanged(function()
-    if not Toggle7Interacted then
-        Toggle7Interacted = true
+Toggle6:OnChanged(function()
+    if not Toggle6Interacted then
+        Toggle6Interacted = true
         return
     end
 
@@ -369,11 +261,11 @@ Toggle7:OnChanged(function()
     end
 end)
 
-local Toggle3 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto Sumbit Moonlit-Bloodlit Plant", Default = false})
+local Toggle7 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto Sumbit Moonlit-Bloodlit Plant", Default = false})
 
-Toggle3:OnChanged(function()
-    if not Toggle3Interacted then
-        Toggle3Interacted = true
+Toggle7:OnChanged(function()
+    if not Toggle7Interacted then
+        Toggle7Interacted = true
         return
     end
 
