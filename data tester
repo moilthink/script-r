@@ -1,0 +1,47 @@
+-- freemium
+local chances = {
+    {Name = "Nightshade", Chance = 40},
+    {Name = "Glowshroom", Chance = 20},
+    {Name = "Mint", Chance = 15},
+    {Name = "Moonflower", Chance = 10},
+    {Name = "Starfruit", Chance = 9.5},
+    {Name = "Moonglow", Chance = 5},
+    {Name = "Moon Blossom", Chance = 0.5},
+}
+
+local function rollItem()
+    local roll = math.random(1, 100)
+    local total = 0
+    for _, item in ipairs(chances) do
+        total += item.Chance
+        if roll <= total then
+            return item.Name
+        end
+    end
+end
+
+print("You got:", rollItem())
+
+
+-- premium
+local chances = {
+    {Name = "Glowshroom", Chance = 30},
+    {Name = "Mint", Chance = 22},
+    {Name = "Moonflower", Chance = 18},
+    {Name = "Starfruit", Chance = 15.5},
+    {Name = "Moonglow", Chance = 12},
+    {Name = "Moon Blossom", Chance = 2.5},
+}
+
+local function rollItem()
+    local roll = math.random(1, 100)
+    local total = 0
+    for _, item in ipairs(chances) do
+        total += item.Chance
+        if roll <= total then
+            return item.Name
+        end
+    end
+end
+
+print("You got:", rollItem())
