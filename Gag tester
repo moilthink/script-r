@@ -88,7 +88,7 @@ end)
 
 local HttpService = game:GetService("HttpService")
 
-local url = "https://raw.githubusercontent.com/moilthink/script-r/refs/heads/main/Data.lua"
+local url = "https://raw.githubusercontent.com/moilthink/script-r/refs/heads/main/Data"
 
 local function loadSeedData(url)
     local success, response = pcall(game.HttpGet, game, url)
