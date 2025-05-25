@@ -1,5 +1,5 @@
 return {
-    ShopData = {
+    SeedData = {
 	["Yellow Umbrella"] = {
 		CosmeticName = "Yellow Umbrella";
 		StockAmount = {1, 1};
