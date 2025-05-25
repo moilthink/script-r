@@ -15,7 +15,7 @@ local Window = Library:CreateWindow{
 
 local HttpService = game:GetService("HttpService")
 
-local url = "https://raw.githubusercontent.com/moilthink/script-r/main/Data.lua" -- Your raw .lua file
+local url = "https://raw.githubusercontent.com/moilthink/script-r/refs/heads/main/Data.lua"
 
 local function loadAllData(url)
     local success, response = pcall(function()
@@ -44,7 +44,7 @@ local Tabs = {
 }
 
 local cosmeticNames = {}
-for name, data in pairs(shopdata) do
+for name in pairs(shopdata) do
     table.insert(cosmeticNames, name)
 end
 
@@ -52,7 +52,7 @@ local selectedCosmeticItems = {}
 
 local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
     Title = "Cosmetic Item",
-    Description = "",
+    Description = "Select cosmetic items to auto buy",
     Values = cosmeticNames,
     Multi = true,
     Default = {},
@@ -80,9 +80,55 @@ Toggle8:OnChanged(function()
     if BuyCosmeticItemEnabled then
         task.spawn(function()
             while BuyCosmeticItemEnabled do
+                while BuyCosmeticItemEnabled do
                 for _, cosmeticName in ipairs(selectedCosmeticItems) do
-                    local args = {cosmeticName}
-                    game:GetService("ReplicatedStorage").GameEvents.BuyCosmeticItem:FireServer(unpack(args))
+                    game:GetService("ReplicatedStorage").GameEvents.BuyCosmeticItem:FireServer(cosmeticName)
+                    task.wait(0.1)
+                end
+            end
+        end)
+    end
+end)
+
+local seedNames = {}
+for name in pairs(seeddata) do
+    table.insert(seedNames, name)
+end
+
+local selectedSeeds = {}
+
+local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
+    Title = "Seed",
+    Description = "",
+    Values = seedNames,
+    Multi = true,
+    Default = {},
+})
+
+MultiDropdown:OnChanged(function(value)
+    selectedSeeds = {}
+    for seedName, isSelected in pairs(value) do
+        if isSelected then
+            table.insert(selectedSeeds, seedName)
+        end
+    end
+end)
+
+local Toggle7 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+
+Toggle7:OnChanged(function()
+    if not Toggle7Interacted then
+        Toggle8Interacted = true
+        return
+    end
+
+    BuySeedEnabled = not BuySeedEnabled
+
+    if BuySeedEnabled then
+        task.spawn(function()
+            while BuySeedEnabled do
+                for _, seedName in ipairs(selectedSeeds) do
+                    game:GetService("ReplicatedStorage").GameEvents.BuySeedStock:FireServer(seedName)
                     task.wait(0.1)
                 end
             end
