@@ -8,7 +8,7 @@ local Window = Library:CreateWindow{
     Size = UDim2.fromOffset(830, 525),
     Resize = true, -- Resize this ^ Size according to a 1920x1080 screen, good for mobile users but may look weird on some devices
     MinSize = Vector2.new(470, 380),
-    Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+    Acrylic = false, -- The blur may be detectable, setting this to false disables blur entirely
     Theme = "Dark",
     MinimizeKey = Enum.KeyCode.LeftControl -- Used when theres no MinimizeKeybind
 }
@@ -166,94 +166,6 @@ Toggle4:OnChanged(function()
                 for _, event in ipairs(selectedEvents) do
                     local args = {event}
                     game:GetService("ReplicatedStorage").GameEvents.BuyEventShopStock:FireServer(unpack(args))
-                    task.wait(0.1)
-                end
-            end
-        end)
-    end
-end)
-
-local selectedCosmeticCrates = {}
-
--- Create dropdown
-local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
-    Title = "Cosmetic Crate",
-    Description = "",
-    Values = {"Sign Crate", "Common Gnome Crate", "Fun Crate", "Farmers Gnome Crate", "Classic Gnome Crate", "Statue Crate"},
-    Multi = true,
-    Default = {},
-})
-
--- Update selected seeds when changed
-MultiDropdown:OnChanged(function(Value)
-    selectedCosmeticCrates = {}
-    for CosmeticCrateName, IsSelected in pairs(Value) do
-        if IsSelected then
-            table.insert(selectedCosmeticCrates, CosmeticCrateName)
-        end
-    end
-end)
-
-local Toggle5 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
-
-Toggle5:OnChanged(function()
-    if not Toggle5Interacted then
-        Toggle5Interacted = true
-        return
-    end
-
-    BuyCosmeticCrateEnabled = not BuyCosmeticCrateEnabled
-
-    if BuyCosmeticCrateEnabled then
-        task.spawn(function()
-            while BuyCosmeticCrateEnabled do
-                for _, cosmeticCrate in ipairs(selectedEvents) do
-                    local args = {cosmeticCrate}
-                    game:GetService("ReplicatedStorage").GameEvents.BuyCosmeticCrate:FireServer(unpack(args))
-                    task.wait(0.1)
-                end
-            end
-        end)
-    end
-end)
-
-local selectedCosmeticItems = {}
-
--- Create dropdown
-local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
-    Title = "Cosmetic Item",
-    Description = "",
-    Values = {"yeloow shit"}, 
-    Multi = true,
-    Default = {},
-})
-
--- Update selected seeds when changed
-MultiDropdown:OnChanged(function(Value)
-    selectedCosmeticItems = {}
-    for CosmeticItemName, IsSelected in pairs(Value) do
-        if IsSelected then
-            table.insert(selectedCosmeticItems, CosmeticItemName)
-        end
-    end
-end)
-
-local Toggle6 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
-
-Toggle6:OnChanged(function()
-    if not Toggle6Interacted then
-        Toggle6Interacted = true
-        return
-    end
-
-    BuyCosmeticItemEnabled = not BuyCosmeticItemEnabled
-
-    if BuyCosmeticItemEnabled then
-        task.spawn(function()
-            while BuyCosmeticItemEnabled do
-                for _, cosmeticCrate in ipairs(selectedEvents) do
-                    local args = {cosmeticCrate}
-                    game:GetService("ReplicatedStorage").GameEvents.BuyCosmeticItem:FireServer(unpack(args))
                     task.wait(0.1)
                 end
             end
