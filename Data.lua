@@ -294,6 +294,6 @@ return {
 		Asset = "rbxassetid://129909329752826";
 		FruitIcon = "rbxassetid://110487410542265";
 		GrowthTime = 1;
+	}
     }
-    
-}	
+}
