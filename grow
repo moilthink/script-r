@@ -73,7 +73,7 @@ Toggle2:OnChanged(function()
                 for _, seed in ipairs(selectedSeeds) do
                     local args = {seed}
                     game:GetService("ReplicatedStorage").GameEvents.BuySeedStock:FireServer(unpack(args))
-                    task.wait(0.1)
+                    task.wait(0.5)
                 end
             end
         end)
@@ -117,7 +117,7 @@ Toggle3:OnChanged(function()
                 for _, gear in ipairs(selectedGears) do
                     local args = {gear}
                     game:GetService("ReplicatedStorage").GameEvents.BuyGearStock:FireServer(unpack(args))
-                    task.wait(0.1)
+                    task.wait(0.5)
                 end
             end
         end)
@@ -166,7 +166,51 @@ Toggle4:OnChanged(function()
                 for _, event in ipairs(selectedEvents) do
                     local args = {event}
                     game:GetService("ReplicatedStorage").GameEvents.BuyEventShopStock:FireServer(unpack(args))
-                    task.wait(0.1)
+                    task.wait(0.5)
+                end
+            end
+        end)
+    end
+end)
+
+local selectedTwilights = {}
+
+-- Create dropdown
+local MultiDropdown = Tabs.Main:CreateDropdown("MultiDropdown", {
+    Title = "Twilight",
+    Description = "",
+    Values = {"Night Egg", "Night Seed Pack", "Twilight Crate", "Star Caller", "Moon Cat", "Celestiberry", "Moon Mango"},
+    Multi = true,
+    Default = {},
+})
+
+-- Update selected seeds when changed
+MultiDropdown:OnChanged(function(Value)
+    selectedTwilights = {}
+    for TwilightName, IsSelected in pairs(Value) do
+        if IsSelected then
+            table.insert(selectedTwilights, TwilightName)
+        end
+    end
+end)
+
+local Toggle8 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+
+Toggle8:OnChanged(function()
+    if not Toggle8Interacted then
+        Toggle8Interacted = true
+        return
+    end
+
+    BuyTwilightEvEnabled = not BuyTwilightEvEnabled
+
+    if BuyTwilightEvEnabled then
+        task.spawn(function()
+            while BuyTwilightEvEnabled do
+                for _, twilight in ipairs(selectedTwilights) do
+                    local args = {twilight}
+                    game:GetService("ReplicatedStorage").GameEvents.BuyNightEventShopStock:FireServer(unpack(args))
+                    task.wait(0.5)
                 end
             end
         end)
@@ -191,7 +235,7 @@ Toggle7:OnChanged(function()
                 }
 
                 game:GetService("ReplicatedStorage").GameEvents.NightQuestRemoteEvent:FireServer(unpack(args))
-                task.wait(0.1)
+                task.wait(0.5)
             end
         end)
     end
