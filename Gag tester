@@ -63,11 +63,11 @@ MultiDropdown:OnChanged(function(value)
     end
 end)
 
-local Toggle7 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
+local Toggle8 = Tabs.Main:CreateToggle("MyToggle", {Title = "Auto buy", Default = false})
 
-Toggle7:OnChanged(function()
-    if not Toggle7Interacted then
-        Toggle7Interacted = true
+Toggle8:OnChanged(function()
+    if not Toggle8Interacted then
+        Toggle8Interacted = true
         return
     end
 
