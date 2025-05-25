@@ -1,400 +1,107 @@
 return {
-    ShopData = {
-	["Yellow Umbrella"] = {
-		CosmeticName = "Yellow Umbrella";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290145031;
-	};
-	["Orange Umbrella"] = {
-		CosmeticName = "Orange Umbrella";
-		StockAmount = {1, 1};
-		ShecklesPurchaseOnly = true;
-		Price = 1000000;
-		PurchaseID = 3290145015;
-	};
-	["Brick Stack"] = {
-		CosmeticName = "Brick Stack";
-		StockAmount = {3, 5};
-		Price = 350000;
-		PurchaseID = 3290145041;
-	};
-	["Compost Bin"] = {
-		CosmeticName = "Compost Bin";
-		StockAmount = {1, 1};
-		Price = 1200000;
-		PurchaseID = 3290145025;
-	};
-	["Log"] = {
-		CosmeticName = "Log";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290145010;
-	};
-	["Rock Pile"] = {
-		CosmeticName = "Rock Pile";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290145022;
-	};
-	["Rake"] = {
-		CosmeticName = "Rake";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290113000;
-	};
-	["Shovel"] = {
-		CosmeticName = "Shovel";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290113132;
-	};
-	["Torch"] = {
-		CosmeticName = "Torch";
+	["Night Egg"] = {
+		SeedName = "Night Egg";
+		SeedRarity = "Rare";
+		StockChance = 3;
 		StockAmount = {1, 3};
-		Price = 800000;
-		PurchaseID = 3290145030;
+		Price = 50000000;
+		PurchaseID = 3286450626;
+		DisplayInShop = true;
+		LayoutOrder = 1;
+		Asset = "rbxassetid://133763620419151";
+		FruitIcon = "rbxassetid://114657244974527";
+		ItemType = "Egg";
+		Stack = 1;
+		Description = "";
 	};
-	["Red Pottery"] = {
-		CosmeticName = "Red Pottery";
+	["Night Seed Pack"] = {
+		SeedName = "Night Seed Pack";
+		SeedRarity = "Rare";
+		StockChance = 3;
 		StockAmount = {1, 3};
-		Price = 800000;
-		PurchaseID = 3290144998;
+		Price = 25000000;
+		PurchaseID = 3286450936;
+		DisplayInShop = true;
+		LayoutOrder = 2;
+		Asset = "rbxassetid://114322381508527";
+		FruitIcon = "rbxassetid://114657244974527";
+		ItemType = "Seed Pack";
+		Stack = 1;
+		Description = "";
 	};
-	["White Pottery"] = {
-		CosmeticName = "White Pottery";
+	["Twilight Crate"] = {
+		SeedName = "Twilight Crate";
+		SeedRarity = "Legendary";
+		StockChance = 1;
 		StockAmount = {1, 3};
-		Price = 800000;
-		PurchaseID = 3290145014;
+		Price = 120000000;
+		PurchaseID = 3292233505;
+		DisplayInShop = true;
+		LayoutOrder = 3;
+		Asset = "rbxassetid://90603416850596";
+		FruitIcon = "rbxassetid://140481838960536";
+		ItemType = "Crate";
+		Stack = 1;
+		Description = "Contains Twilight cosmetics";
 	};
-	["Wood Pile"] = {
-		CosmeticName = "Wood Pile";
-		StockAmount = {1, 1};
-		Price = 800000;
-		PurchaseID = 3290145016;
-	};
-	["Small Circle Tile"] = {
-		CosmeticName = "Small Circle Tile";
-		StockAmount = {3, 5};
-		Price = 150000;
-		PurchaseID = 3290145040;
-	};
-	["Medium Circle Tile"] = {
-		CosmeticName = "Medium Circle Tile";
-		StockAmount = {1, 3};
-		Price = 250000;
-		PurchaseID = 3290145046;
-	};
-	["Small Path Tile"] = {
-		CosmeticName = "Small Path Tile";
-		StockAmount = {3, 5};
-		Price = 250000;
-		PurchaseID = 3290145036;
-	};
-	["Medium Path Tile"] = {
-		CosmeticName = "Medium Path Tile";
-		StockAmount = {1, 5};
-		Price = 450000;
-		PurchaseID = 3290145011;
-	};
-	["Large Path Tile"] = {
-		CosmeticName = "Large Path Tile";
-		StockAmount = {1, 3};
-		Price = 650000;
-		PurchaseID = 3290145052;
-	};
-	["Axe Stump"] = {
-		CosmeticName = "Axe Stump";
-		StockAmount = {1, 1};
-		Price = 1500000;
-		PurchaseID = 3290145012;
-	};
-	["Bookshelf"] = {
-		CosmeticName = "Bookshelf";
-		StockAmount = {1, 1};
-		Price = 2000000;
-		PurchaseID = 3290145044;
-	};
-	["Brown Bench"] = {
-		CosmeticName = "Brown Bench";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290145003;
-	};
-	["Hay Bale"] = {
-		CosmeticName = "Hay Bale";
-		StockAmount = {1, 1};
-		Price = 750000;
-		PurchaseID = 3290785122;
-	};
-	["Light On Ground"] = {
-		CosmeticName = "Light On Ground";
-		StockAmount = {1, 3};
-		Price = 1000000;
-		PurchaseID = 3290145047;
-	};
-	["Log Bench"] = {
-		CosmeticName = "Log Bench";
-		StockAmount = {1, 1};
-		Price = 1200000;
-		PurchaseID = 3290110287;
-	};
-	["Mini TV"] = {
-		CosmeticName = "Mini TV";
-		StockAmount = {1, 1};
-		Price = 1300000;
-		PurchaseID = 3290145028;
-	};
-	["Shovel Grave"] = {
-		CosmeticName = "Shovel Grave";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290145050;
-	};
-	["Small Stone Lantern"] = {
-		CosmeticName = "Small Stone Lantern";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290145009;
-	};
-	["Small Stone Pad"] = {
-		CosmeticName = "Small Stone Pad";
-		StockAmount = {3, 5};
-		Price = 1000000;
-		PurchaseID = 3290145024;
-	};
-	["Large Stone Pad"] = {
-		CosmeticName = "Large Stone Pad";
-		StockAmount = {1, 3};
-		Price = 1500000;
-		PurchaseID = 3290145006;
-	};
-	["Stone Lantern"] = {
-		CosmeticName = "Stone Lantern";
-		StockAmount = {1, 1};
-		Price = 1500000;
-		PurchaseID = 3290145017;
-	};
-	["Viney Beam"] = {
-		CosmeticName = "Viney Beam";
-		StockAmount = {1, 1};
-		Price = 1300000;
-		PurchaseID = 3290145026;
-	};
-	["Water Trough"] = {
-		CosmeticName = "Water Trough";
-		StockAmount = {1, 1};
-		Price = 1500000;
-		PurchaseID = 3290145001;
-	};
-	["White Bench"] = {
-		CosmeticName = "White Bench";
-		StockAmount = {1, 1};
-		Price = 1000000;
-		PurchaseID = 3290144996;
-	};
-	["Wood Fence"] = {
-		CosmeticName = "Wood Fence";
-		StockAmount = {1, 1};
-		Price = 750000;
-		PurchaseID = 3290144997;
-	};
-	["Small Wood Flooring"] = {
-		CosmeticName = "Small Wood Flooring";
-		StockAmount = {3, 5};
-		Price = 850000;
-		PurchaseID = 3290145005;
-	};
-	["Medium Wood Flooring"] = {
-		CosmeticName = "Medium Wood Flooring";
-		StockAmount = {1, 3};
-		Price = 1000000;
-		PurchaseID = 3290145051;
-	};
-	["Large Wood Flooring"] = {
-		CosmeticName = "Large Wood Flooring";
-		StockAmount = {1, 2};
-		Price = 1200000;
-		PurchaseID = 3290145007;
-	};
-	["Small Stone Table"] = {
-		CosmeticName = "Small Stone Table";
-		StockAmount = {1, 1};
-		Price = 1300000;
-		PurchaseID = 3290145042;
-	};
-	["Medium Stone Table"] = {
-		CosmeticName = "Medium Stone Table";
-		StockAmount = {1, 1};
-		Price = 1750000;
-		PurchaseID = 3290145039;
-	};
-	["Long Stone Table"] = {
-		CosmeticName = "Long Stone Table";
-		StockAmount = {1, 1};
-		Price = 2000000;
-		PurchaseID = 3290145023;
-	};
-	["Lamp Post"] = {
-		CosmeticName = "Lamp Post";
-		StockAmount = {1, 1};
-		Price = 11800000;
-		PurchaseID = 3290145019;
-	};
-	["Bamboo Wind Chime"] = {
-		CosmeticName = "Bamboo Wind Chime";
-		StockAmount = {1, 1};
-		Price = 11750000;
-		PurchaseID = 3290112781;
-	};
-	["Metal Wind Chime"] = {
-		CosmeticName = "Metal Wind Chime";
-		StockAmount = {1, 1};
-		Price = 11750000;
-		PurchaseID = 3290112884;
-	};
-	["Bird Bath"] = {
-		CosmeticName = "Bird Bath";
+	["Star Caller"] = {
+		SeedName = "Star Caller";
+		SeedRarity = "Legendary";
+		StockChance = 2;
 		StockAmount = {1, 1};
 		Price = 12000000;
-		PurchaseID = 3290144990;
+		PurchaseID = 3286452366;
+		DisplayInShop = true;
+		LayoutOrder = 5;
+		Asset = "rbxassetid://108537992961712";
+		FruitIcon = "rbxassetid://114657244974527";
+		ItemType = "Gear";
+		Stack = 1;
+		Description = "Attracts shooting stars during a meteor shower";
 	};
-	["Brown Stone Pillar"] = {
-		CosmeticName = "Brown Stone Pillar";
+	["Moon Cat"] = {
+		SeedName = "Moon Cat";
+		SeedRarity = "Legendary";
+		StockChance = 4;
 		StockAmount = {1, 1};
-		Price = 12500000;
-		PurchaseID = 3290145018;
+		Price = 100000000;
+		PurchaseID = 3292276366;
+		DisplayInShop = true;
+		LayoutOrder = 6;
+		Asset = "rbxassetid://72392850111255";
+		FruitIcon = "rbxassetid://72392850111255";
+		ItemType = "Pet";
+		Stack = 1;
+		Description = "Moon Nap: Cat naps in a random spot in your farm, emitting an aura that boosts nearby fruit size & Moon Harvest: Grants chance for Night type plants to replant when harvested";
 	};
-	["Dark Stone Pillar"] = {
-		CosmeticName = "Dark Stone Pillar";
-		StockAmount = {1, 1};
-		Price = 12500000;
-		PurchaseID = 3290145000;
+	Celestiberry = {
+		SeedName = "Celestiberry Seed";
+		SeedRarity = "Mythical";
+		StockChance = 3;
+		StockAmount = {1, 3};
+		Price = 15000000;
+		PurchaseID = 3292232795;
+		DisplayInShop = true;
+		LayoutOrder = 7;
+		Asset = "rbxassetid://126201609144472";
+		FruitIcon = "rbxassetid://79823830387948";
+		ItemType = "Seed";
+		Stack = 1;
+		Description = "";
 	};
-	["Grey Stone Pillar"] = {
-		CosmeticName = "Grey Stone Pillar";
+	["Moon Mango"] = {
+		SeedName = "Moon Mango Seed";
+		SeedRarity = "Divine";
+		StockChance = 8;
 		StockAmount = {1, 1};
-		Price = 12500000;
-		PurchaseID = 3290145035;
-	};
-	["Campfire"] = {
-		CosmeticName = "Campfire";
-		StockAmount = {1, 1};
-		Price = 11800000;
-		PurchaseID = 3290145034;
-	};
-	["Clothesline"] = {
-		CosmeticName = "Clothesline";
-		StockAmount = {1, 1};
-		Price = 11800000;
-		PurchaseID = 3290145013;
-	};
-	["Cooking Pot"] = {
-		CosmeticName = "Cooking Pot";
-		StockAmount = {1, 1};
-		Price = 12000000;
-		PurchaseID = 3290145020;
-	};
-	["Curved Canopy"] = {
-		CosmeticName = "Curved Canopy";
-		StockAmount = {1, 1};
-		Price = 12500000;
-		PurchaseID = 3290144999;
-	};
-	["Flat Canopy"] = {
-		CosmeticName = "Flat Canopy";
-		StockAmount = {1, 1};
-		Price = 12500000;
-		PurchaseID = 3290145032;
-	};
-	["Small Wood Arbour"] = {
-		CosmeticName = "Small Wood Arbour";
-		StockAmount = {1, 1};
-		Price = 13000000;
-		PurchaseID = 3290145004;
-	};
-	["Square Metal Arbour"] = {
-		CosmeticName = "Square Metal Arbour";
-		StockAmount = {1, 1};
-		Price = 13000000;
-		PurchaseID = 3290145029;
-	};
-	["Small Wood Table"] = {
-		CosmeticName = "Small Wood Table";
-		StockAmount = {1, 1};
-		Price = 11800000;
-		PurchaseID = 3290145021;
-	};
-	["Large Wood Table"] = {
-		CosmeticName = "Large Wood Table";
-		StockAmount = {1, 1};
-		Price = 12200000;
-		PurchaseID = 3290145002;
-	};
-	["Wheelbarrow"] = {
-		CosmeticName = "Wheelbarrow";
-		StockAmount = {1, 1};
-		Price = 13000000;
-		PurchaseID = 3290112654;
-	};
-	["Blue Well"] = {
-		CosmeticName = "Blue Well";
-		StockAmount = {1, 1};
-		Price = 60000000;
-		PurchaseID = 3290145027;
-	};
-	["Brown Well"] = {
-		CosmeticName = "Brown Well";
-		StockAmount = {1, 1};
-		Price = 60000000;
-		PurchaseID = 3290113294;
-	};
-	["Red Well"] = {
-		CosmeticName = "Red Well";
-		StockAmount = {1, 1};
-		Price = 60000000;
-		PurchaseID = 3290115132;
-	};
-	["Green Tractor"] = {
-		CosmeticName = "Green Tractor";
-		StockAmount = {1, 1};
-		Price = 555500000;
-		PurchaseID = 3290113504;
-	};
-	["Red Tractor"] = {
-		CosmeticName = "Red Tractor";
-		StockAmount = {1, 1};
-		Price = 555500000;
-		PurchaseID = 3290114982;
-	};
-	["Ring Walkway"] = {
-		CosmeticName = "Ring Walkway";
-		StockAmount = {1, 1};
-		Price = 55000000;
-		PurchaseID = 3290145033;
-	};
-	["Viney Ring Walkway"] = {
-		CosmeticName = "Viney Ring Walkway";
-		StockAmount = {1, 1};
-		Price = 55200000;
-		PurchaseID = 3290145045;
-	};
-	["Large Wood Arbour"] = {
-		CosmeticName = "Large Wood Arbour";
-		StockAmount = {1, 1};
-		Price = 55500000;
-		PurchaseID = 3290114021;
-	};
-	["Round Metal Arbour"] = {
-		CosmeticName = "Round Metal Arbour";
-		StockAmount = {1, 1};
-		Price = 55500000;
-		PurchaseID = 3290115313;
-	};
-	["Frog Fountain"] = {
-		CosmeticName = "Frog Fountain";
-		StockAmount = {1, 1};
-		Price = 65200000;
-		PurchaseID = 3290145037;
+		Price = 1000000000;
+		PurchaseID = 3292232443;
+		DisplayInShop = true;
+		LayoutOrder = 8;
+		FruitIcon = "rbxassetid://129936557516178";
+		Asset = "rbxassetid://94844334284183";
+		ItemType = "Seed";
+		Stack = 1;
+		Description = "";
 	};
 }
